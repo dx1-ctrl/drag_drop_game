@@ -1,8 +1,8 @@
 workflows:
   flutter-build:
-    name: Flutter build workflow
+    name: Flutter iOS Build Workflow
     max_build_duration: 60
-    instance_type: mac_mini_m2
+    instance_type: mac_mini_m2  # Use Mac instances for iOS builds
     environment:
       flutter: stable
       xcode: latest
@@ -17,4 +17,10 @@ workflows:
       - flutter pub get
       - flutter build ios --release --no-codesign
     artifacts:
-      - build/ios/ipa/Runner.ipa
+      - build/ios/ipa/Runner.ipa  # Path to save the generated .ipa file
+    ios:
+      # Specify the iOS build configurations
+      distribution_method: ad-hoc  # or app-store for App Store deployment
+      signing:
+        identity: "Apple Distribution"  # Replace with your correct identity
+        provisioning_profile: "ProvisioningProfileName"  # Replace with your provisioning profile name
