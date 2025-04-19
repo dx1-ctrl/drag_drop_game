@@ -1,13 +1,16 @@
 workflows:
-  flutter:
+  flutter-build:
     name: Flutter build workflow
     max_build_duration: 60
     instance_type: mac_mini
-    platform: ios
     trigger:
       branches:
         only:
           - master
+    environment:
+      vars:
+        FLUTTER_CHANNEL: stable
     ios:
-      artifacts:
-        - build/ios/ipa/Runner.ipa
+      build:
+        ipa:
+          path: build/ios/ipa/Runner.ipa
