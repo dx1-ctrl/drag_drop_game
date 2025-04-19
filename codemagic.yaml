@@ -18,9 +18,3 @@ workflows:
       - flutter build ios --release --no-codesign
     artifacts:
       - build/ios/ipa/Runner.ipa  # Path to save the generated .ipa file
-    ios:
-      # Specify the iOS build configurations
-      distribution_method: ad-hoc  # or app-store for App Store deployment
-      signing:
-        identity: "Apple Distribution"  # Replace with your correct identity
-        provisioning_profile: "ProvisioningProfileName"  # Replace with your provisioning profile name
